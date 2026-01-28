@@ -20,7 +20,7 @@ const onxrloaded = () => {
     ],
   })
 
-  // AR.app.on('xr:imageupdated', function(evt){console.log(evt)}, {})
+  AR.app.on('xr:imageupdated', function(evt){console.log(evt)}, {})
 }
 window.XR8 ? onxrloaded() : window.addEventListener('xrloaded', onxrloaded)
 
