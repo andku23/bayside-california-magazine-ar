@@ -7,21 +7,27 @@ import image1 from './image-targets/magazine-0-cover.json';
 
 console.log(image1)
 
-await XR8.loadChunk('slam')
-
-AR.init();
-await AR.loadScene(() => {}, () => {});
 
 
-const onxrloaded = () => {
-  XR8.XrController.configure({
-    imageTargetData: [
-      image1
-    ],
-  })
 
-  AR.app.on('xr:imageupdated', function(evt){console.log(evt)}, {})
-}
-window.XR8 ? onxrloaded() : window.addEventListener('xrloaded', onxrloaded)
+
+const start = async () => {
+  try {
+    await XR8.loadChunk('slam')
+    AR.init();
+    await AR.loadScene(() => {}, () => {});
+    XR8.XrController.configure({
+      imageTargetData: [
+        image1
+      ],
+    })
+    console.log(XRExtras)
+    AR.app.on('xr:imageupdated', function(evt){console.log(evt)}, {})
+  } catch (e) {
+    console.warn("error", "start", e);
+  }
+};
+
+start();
 
 createApp(App).mount('#app');
