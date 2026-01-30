@@ -99,7 +99,7 @@ const PlayCanvasAR = {
 						let camerafeed = document.getElementById("camerafeed");
 						//I think camera feed doesnt exist anymore but just in case ill put if in an if
 						if(camerafeed){
-							camerafeed.style.zIndex = - 2;
+							camerafeed.style.zIndex = -2;
 							//I don't know for the life of me why I have to manually set this but I do
 							camerafeed.style.position = "absolute";
 							camerafeed.width = app.width;

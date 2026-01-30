@@ -1,0 +1,38 @@
+.fade-enter-active, .fade-leave-active
+{
+  transition: all 1s ease;
+}
+
+.fade-enter-from, .fade-leave-to
+{
+  opacity: 0;
+}
+
+
+@-webkit-keyframes spin
+{
+  0%
+  {
+    //-webkit-transform: translate(-50%, -50%);
+    -webkit-transform: rotate(0deg);
+  }
+  100%
+  {
+    //-webkit-transform: translate(-50%, -50%);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin
+{
+  0%
+  {
+    //-transform: translate(-50%, -50%);
+    transform: rotate(0deg);
+  }
+  100%
+  {
+    //-transform: translate(-50%, -50%);
+    transform: rotate(360deg);
+  }
+}

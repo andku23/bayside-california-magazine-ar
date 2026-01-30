@@ -1,39 +1,65 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref, onMounted } from "vue";
+const loaded = ref(false);
+
+onMounted(async () => {
+  await new Promise(resolve => {
+    setTimeout(resolve, 2000);
+  });
+
+  loaded.value = true;
+});
+
 </script>
 
 <template>
-  <div>
-    
-  </div>
+  <transition name = "fade">
+    <div v-if = "!loaded">
+      <div class = "loading-container">
+        <div class = "background"></div>
+        <img class = "loading-icon" src = "./assets/logo.png">
+      </div>
+      <div class = "loading-container">
+        <img class = "loading-spinner" src = "./assets/loading-spinner.png">
+      </div>
+    </div>
+  </transition>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<style scoped scss>
+  .loading-container{
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    justify-content: center;
+    align-items: center;
+
+    .background{
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background-color: #008D97;
+    }
+
+    .loading-icon{
+      position: relative;
+      width: 30%
+    }
+
+    .loading-spinner{
+      position: relative;
+      width: 40%;
+      animation: linear spin 3s infinite;
+    }
+
+    
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
+  
 </style>
