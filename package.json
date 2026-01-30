@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "serve": "vite --host",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -12,9 +13,11 @@
     "vue": "^3.5.26"
   },
   "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "^2.1.4",
     "@vitejs/plugin-vue": "^6.0.3",
     "vite": "^7.3.1",
-    "vite-plugin-vue-devtools": "^8.0.5"
+    "vite-plugin-vue-devtools": "^8.0.5",
+    "vue-cli-service": "^5.0.10"
   },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
