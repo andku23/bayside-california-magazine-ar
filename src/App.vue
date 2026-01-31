@@ -66,7 +66,7 @@ const linkout = function(){
       <div class = "magazine-linkout-area">
     <transition name = "slide-up">
         <div class = "magazine-linkout" v-if = "isLinkoutActive" @click = "linkout">
-          Buy a Magazine
+          BUY A MAGAZINE NOW
         </div>
     </transition>
 
