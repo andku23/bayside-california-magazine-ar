@@ -12,6 +12,12 @@ onMounted(async () => {
     setTimeout(resolve, 2000);
   });
 
+  while(!window.isPCSceneLoaded){
+    await new Promise(resolve => {
+      setTimeout(resolve, 500);
+    });
+  }
+
   loaded.value = true;
   isScanReticle.value = true;
 
