@@ -1,5 +1,5 @@
 import './assets/main.css'
-//import './scss/app.scss'
+import './scss/app.scss'
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -11,13 +11,9 @@ const start = async () => {
     await XR8.loadChunk('slam')
     AR.init();
     await AR.loadScene(() => {}, () => {});
-    XR8.XrController.configure({
-      imageTargetData: [
-        image1
-      ],
-    })
-    console.log(XRExtras)
-    AR.app.on('xr:imageupdated', function(evt){console.log(evt)}, {})
+  
+    //console.log(XRExtras)
+    //AR.app.on('xr:imageupdated', function(evt){console.log(evt)}, {})
   } catch (e) {
     console.warn("error", "start", e);
   }
