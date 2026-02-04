@@ -6,16 +6,23 @@ import AR from './js/playcanvasAR.js'
 const loaded = ref(false);
 const isLinkoutActive = ref(false);
 const isScanReticle = ref(false);
+const loadingTimeout = ref(false);
 
 onMounted(async () => {
+
+  const loadingStartTime = Date.now();
   await new Promise(resolve => {
     setTimeout(resolve, 2000);
   });
-
+  
   while(!window.isPCSceneLoaded){
     await new Promise(resolve => {
       setTimeout(resolve, 500);
     });
+    
+    if(Date.now() - loadingStartTime > 6000){
+      loadingTimeout.value = true;
+    }
   }
 
   loaded.value = true;
@@ -55,6 +62,15 @@ const linkout = function(){
         </div>
         <div class = "loading-container fixed-fill">
           <div class = "loading-spinner"/>
+          
+        </div>
+
+        <div class = "loading-container fixed-fill">
+          <transition name = "fade">
+            <div class = "error-text-1" v-if = "loadingTimeout">
+              (If stuck on loading, try open on external browser)
+            </div>
+          </transition>
         </div>
       </div>
     </transition>
@@ -88,6 +104,14 @@ const linkout = function(){
     top: 0;
     bottom: 0;
     right: 0;
+  }
+  .error-text-1{
+    color: white;
+    position: relative;
+    text-align: center;
+    width: 70%;
+    font-size: 1.3rem;
+    margin-top: 70%;
   }
   .loading-container{
     display: flex;
